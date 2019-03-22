@@ -12,3 +12,9 @@
         create: true
 
 
+- clean: ['~']
+
+- link:
+    ~/.gitconfig: gitconfig
+
+
