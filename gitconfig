@@ -1,0 +1,22 @@
+[github]
+    user = cbdowell
+    email = cbdowell@gmail.com
+
+[user]
+    name = cbdowell
+    email = cbdowell@gmail.com
+
+[hub]
+    protocol = https
+
+[github]
+    user = cbdowell
+
+[push]
+    default = simple
+
+[fetch]
+    prune = true
+
+[ghq]
+    root = ~/.ghq
