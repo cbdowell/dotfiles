@@ -1,97 +1,22 @@
+[github]
+    user = cbdowell
+    email = cbdowell@gmail.com
 
 [user]
-
-    name           = cbdowell
-    email          = cbdowell@gmail.com
-
-
-[github]
-
-    user           = cbdowell
-
-
-[core]
-
-    excludesfile   = ~/.config/git/ignore
-    editor         = nano
-    filemode       = false
-    trustctime     = false
-    autocrlf       = input
-    untrackedCache = true
-    pager          = diff-so-fancy | less --tabs = 4 -RFX
-
-
-[color]
-
-    ui             = auto
-
-
-[color "status"]
-
-    added          = yellow
-    changed        = green
-    untracked      = cyan
-
-
-[grep]
-
-    lineNumber     = true
-
-
-[help]
-
-    autocorrect    = 1
-
-
-[fetch]
-
-    prune          = true
-
-
-[ghq]
-
-    root           = ~/.ghq
-
-
-[ghq "https://gitlab.com/"]
-
-    vcs            = git
-
-
-[ghq "https://bitbucket.org/"]
-
-    vcs            = git
-
-
-[ghq "https://github.com/"]
-
-    vcs            = git
-
-
-[gpg]
-
-    program        = gpg2
-
-
-[rerere]
-
-    enabled        = true
-
-
-[url "git@github.com:"]
-
-    pushInsteadOf  = "github:"
-    pushInsteadOf  = "git://github.com/"
-    pushInsteadOf  = "https://github.com/"
-
-
-[url "git@gitlab.com:"]
-
-    pushInsteadOf  = "gitlab:"
-    pushInsteadOf  = "git://gitlab.com/"
-    pushInsteadOf  = "https://gitlab.com/"
-
+    name = cbdowell
+    email = cbdowell@gmail.com
 
 [hub]
+    protocol = https
 
-    protocol       = https
+[github]
+    user = cbdowell
+
+[push]
+    default = simple
+
+[fetch]
+    prune = true
+
+[ghq]
+    root = ~/.ghq
