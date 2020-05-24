@@ -1,0 +1,4 @@
+
+DOTFILES_DIRS="~/.dotfiles"
+EXCLUDES="README.md Makefile .vscode/settings.json"
+UNDOTTED=".editorconfig .vscode"

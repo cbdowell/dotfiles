@@ -1,0 +1,327 @@
+#  _ ____    _     ___
+# (_)__ /  _| |_  / __|_ __ ____ _ _  _
+# | ||_ \ |_   _| \__ \ V  V / _` | || |
+# |_|___/   |_|   |___/\_/\_/\__,_|\_, |
+#                              |___/
+# author: Christopher Dowell
+
+set $mod Mod4
+
+set $left_key  Left
+set $down_key  Down
+set $up_key    Up
+set $right_key Right
+
+set $window_border 2
+
+# No. of pixels by which to resize the gaps per keypress
+set $gaps_resize 4
+
+# Percent by which to raise/lower the volume per keypress
+set $volume_change 5
+
+#
+#  /\  _  _ | . _ _ _|_. _  _  _
+# /--\|_)|_)|_|(_(_| | |(_)| |_)
+#     |  |
+
+set $browser firefox
+set $launcher rofi -show drun
+set $locker --no-startup-id betterlockscreen -l dimblur
+set $screenshot xfce4-screenshooter
+set $term kitty
+
+
+# ___
+#  | |_  _  _ _ . _  _
+#  | | |(/_| | ||| |(_|
+#                    _|
+
+font pango:M+ 1m 12
+for_window [class=".*"] title_format " %title"
+
+set_from_resource $bg     color0 #040409
+set_from_resource $fg     color7 #d8d9e3
+set_from_resource $color1 color1 #275ECA
+set_from_resource $color4 color4 #688CAB
+
+#                       |---- Titlebar ----|  |---- Frame ----|
+# Class                 Border  Backgr. Text  Indicator Border
+client.focused          $color1 $color1 $fg   $color4   $color1
+client.focused_inactive $color1 $bg     $fg   $color4   $bg
+client.unfocused        $color1 $bg     $fg   $color4   $bg
+client.urgent           $bg     $bg     $fg   $color4   $bg
+client.placeholder      $bg     $bg     $fg   $color4   $bg
+
+client.background       $bg
+
+
+#  __
+# / _  _  _  _
+# \__)(_||_)_)
+#        |
+
+gaps inner 10
+
+smart_gaps on
+smart_borders on
+
+# Popups
+popup_during_fullscreen smart
+
+# floating_minimum_size 75 x 50
+# floating_maximum_size 400 x 300
+
+for_window [class="^.*"] border pixel $window_border
+
+#
+# \    / _  _|  _ _  _  _ _  _
+#  \/\/ (_)| |<_)|_)(_|(_(/__)
+#                |
+
+set $ws1  1:
+set $ws2  2:
+set $ws3  3:
+set $ws4  4:
+set $ws5  5:
+set $ws6  6:
+set $ws7  7:
+set $ws8  8:
+set $ws9  9:
+set $ws0 10:
+
+workspace $ws1 output eDP1
+workspace $ws2 output VGA1
+workspace $ws3 output VGA1
+workspace $ws4 output VGA1
+workspace $ws5 output VGA1
+workspace $ws6 output VGA1
+workspace $ws7 output VGA1
+workspace $ws8 output VGA1
+workspace $ws9 output VGA1
+workspace $ws0 output VGA1
+
+# Default Layouts
+for_window [workspace=$ws2] layout tabbed
+for_window [workspace=$ws4] layout tabbed
+
+for_window [class="(?i)firefox" window_role="^(?!About$)" window_type="normal"] move to workspace $ws1, focus
+for_window [class="(?i)firefox" window_role="About"] floating enable
+for_window [class="(?i)firefox" window_role="Popup"] border none
+for_window [class="(?i)firefox" window_role="(?i)GtkFileChooserDialog"] floating enable, move absolute position 10 10, resize set 640 480
+
+assign [class="Qutebrowser|Tor|Firefox"] $ws1
+assign [class="Code"] $ws2
+assign [class="Tilix|Termite"] $ws3
+assign [class="Thunar|pcmanfm"] $ws4
+assign [class="Evolution|Thunderbird|Riot|TelegramDesktop"] $ws5
+
+
+#            __
+# |_/ _     |__). _  _|. _  _  _
+# | \(/_\/  |__)|| |(_||| |(_|_)
+#       /                   _|
+
+focus_follows_mouse no
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload; exec notify-send "Reloaded i3 config."
+# Restart i3 in-place (preserves layout/session)
+bindsym $mod+Shift+r restart
+
+### Applications ###
+
+bindsym $mod+i exec $browser
+bindsym $mod+d exec $launcher
+bindsym $mod+z exec --no-startup-id jgmenu
+bindsym $mod+Shift+o exec $locker
+bindsym $mod+Print exec $screenshot
+bindsym $mod+Return exec $term
+
+### Window Actions ###
+
+# Toggle fullscreen mode for focused window
+bindsym $mod+f fullscreen toggle
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+### Containers ###
+
+# Toggle split orientation
+bindsym $mod+q split toggle
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Split in horizontal orientation
+bindsym $mod+b split h
+
+# Change container layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Change focused container
+bindsym $mod+$left_key  focus left
+bindsym $mod+$down_key  focus down
+bindsym $mod+$up_key    focus up
+bindsym $mod+$right_key focus right
+
+# Move focused container
+bindsym $mod+Shift+$left_key  move left
+bindsym $mod+Shift+$down_key  move down
+bindsym $mod+Shift+$up_key    move up
+bindsym $mod+Shift+$right_key move right
+
+# Focus latest urgent window
+bindsym $mod+u [urgent=latest] focus
+
+# Focus parent container
+bindsym $mod+a focus parent
+
+# Focus child container
+bindsym $mod+c focus child
+
+### Floating Windows ###
+
+# Key to hold when dragging floating windows
+floating_modifier $mod
+
+# Toggle focus between tiling/floating windows
+bindsym $mod+space focus mode_toggle
+
+# Toggle tiling/floating mode for focused window
+bindsym $mod+Shift+space floating toggle
+
+### Workspaces ###
+
+bindsym $mod+Tab workspace back_and_forth
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws3
+bindsym $mod+Shift+3 move container to workspace $ws2
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+
+# Move workspace between outputs
+bindsym $mod+Ctrl+$left_key  move workspace to output left
+bindsym $mod+Ctrl+$down_key  move workspace to output down
+bindsym $mod+Ctrl+$up_key    move workspace to output up
+bindsym $mod+Ctrl+$right_key move workspace to output right
+
+
+#  __
+# |_    _  __|_. _  _   |_/ _    _
+# | |_|| |(_ | |(_)| |  | \(/_\/_)
+#                             /
+
+# Volume
+set $sink $(pacmd list-sinks | awk '/\* index:/ { print $3 }')
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +$volume_change%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -$volume_change%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $sink toggle
+
+# Microphone
+set $source $(pacmd list-sources | awk '/\* index:/ { print $3 }')
+bindsym XF86AudioMicMute exec pactl set-source-mute $source toggle
+
+# MPRIS Player Controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioStop exec playerctl stop
+
+# ThinkPad Button
+bindsym XF86Launch1 exec $locker
+
+# Lock/Screensaver
+bindsym XF86ScreenSaver exec $locker
+
+
+#
+# |\/| _  _| _  _
+# |  |(_)(_|(/__)
+#
+
+set $mode_resize " Resize"
+mode $mode_resize {
+    bindsym $left_key  resize shrink width  5 px or 5 ppt
+    bindsym $down_key  resize grow   height 5 px or 5 ppt
+    bindsym $up_key    resize shrink height 5 px or 5 ppt
+    bindsym $right_key resize grow   width  5 px or 5 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $mode_gaps "Gaps: %{T2}ﰂ%{T-} / %{T2}ﯰ%{T-} for inner,\
+ hold %{F#333}[%{F-}Mod%{F#333}]%{F-} for outer"
+mode $mode_gaps {
+    bindsym plus       gaps inner all plus  $gaps_resize
+    bindsym minus      gaps inner all minus $gaps_resize
+    bindsym $mod+plus  gaps outer all plus  $gaps_resize
+    bindsym $mod+minus gaps outer all minus $gaps_resize
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+set $mode_power \
+ "%{T2}%{F#821717}襤%{F-}%{T-} %{F#333}[%{F-}S%{F#333}]%{F-}\
+  %{T2}%{F#824517}ﰇ%{F-}%{T-} %{F#333}[%{F-}R%{F#333}]%{F-}\
+  %{T2}%{F#174282}%{F-}%{T-} %{F#333}[%{F-}L%{F#333}]%{F-}"
+mode $mode_power {
+    bindsym s exec shutdown now
+    bindsym r exec shutdown -r now
+    bindsym l exec i3-msg exit
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+bindsym $mod+r mode $mode_resize
+bindsym $mod+g mode $mode_gaps
+bindsym $mod+Shift+x mode $mode_power
+
+#
+#  /\    _|_ _  __|_ _  __|_
+# /--\|_| | (_)_) | (_||  |
+#
+
+exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output HDMI1 --off --output VGA1 --mode 1360x768 --pos 1366x0 --rotate normal --output VIRTUAL1 --off
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+exec_always --no-startup-id picom -b
+exec_always --no-startup-id wal -R -o $HOME/.config/polybar/launch_polybar
+
+exec ~/.config/i3/scripts/battery_notify.py
+exec ~/.config/i3/scripts/brightness_notify.py
+exec ~/.config/i3/scripts/urgency_timeout.py
+
+# Tray Applets
+exec --no-startup-id nm-applet
+exec --no-startup-id redshift-gtk
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+exec --no-startup-id volumeicon
+exec --no-startup-id fix_xcursor
