@@ -1,0 +1,15 @@
+/*  ___      __ _
+ * | _ \___ / _(_)
+ * |   / _ \  _| |
+ * |_|_\___/_| |_|
+ *
+ * Author: Christopher Dowell <cbdowell@gmail.com>
+ * License: MIT
+ */
+
+configuration {
+    modi: "drun,ssh";
+    show-icons: true;
+    terminal: "kitty";
+    theme: "~/.cache/wal/rofi-callisto.rasi";
+}
