@@ -1,4 +1,4 @@
 
-DOTFILES_DIRS="~/.dotfiles"
+DOTFILES_DIRS="~/SparkleShare/github.com/dotfiles"
 EXCLUDES="README.md Makefile .vscode/settings.json"
 UNDOTTED=".editorconfig .vscode"
