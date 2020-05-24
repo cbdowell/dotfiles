@@ -1,0 +1,123 @@
+#
+# Global .gitignore Flle
+# Reference:  http://help.github.com/ignore-files/
+#
+# file: ~/.config/git/ignore
+#
+# git config --global core.excludesfile ~/.config/git/ignore
+# git config --list
+#
+
+## Emacs
+
+*~
+*.*~
+\#*
+.\#*
+TAGS
+
+## Vim
+
+*.swp
+.*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist
+
+## Logs / Databases
+
+*.log
+*.cache
+
+## Generated
+
+.DS_Store?
+.DS_Store
+.CFUserTextEncoding
+.Trash
+.Xauthority
+thumbs.db
+Icon?
+Thumbs.db
+.cache
+.pid
+.sock
+
+## Code
+
+.svn
+.git
+.swp
+.idea
+.*.swp
+*~
+.tags
+tags
+.sass-cache
+tmp
+.codekit-cache
+config.codekit
+
+## Compiled
+
+*.class
+*.exe
+*.o
+*.so
+*.dll
+*.zwc
+*.pyc
+*.pyo
+*.pyc
+*.elc
+
+.git/
+.cask/
+.local/
+chromium/
+void-packages/
+usr/
+tmp/
+var/# no thx
+node_modules
+vendor
+package-lock.json
+npm-packages/
+*.old
+*.gz
+*.7z
+*.flac
+*.o
+*.so
+*.out
+*.ogg
+*.mp3
+
+# Jetbreains
+
+.idea/*
+
+# Visual Studio Code
+
+.vscode/*
+
+# Folder
+
+Desktop.ini
+
+# Thumbnail
+
+._*
+Thumbs.db
+
+## External
+
+.Trashes
+
+## Python
+
+*.pyc
+
+## Random
+
+shilocation
