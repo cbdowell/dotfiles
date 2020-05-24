@@ -1,6 +1,6 @@
 # Dotfiles
 
-My dotfiles, managed with [dotbot](https://github.com/anishathalye/dotbot/)
+Using [dotbot](https://github.com/anishathalye/dotbot/)
 
 ## Install
 
