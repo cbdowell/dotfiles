@@ -1,0 +1,96 @@
+/*   ___      _ _ _    _
+ *  / __|__ _| | (_)__| |_ ___
+ * | (__/ _` | | | (_-<  _/ _ \
+ *  \___\__,_|_|_|_/__/\__\___/
+ *
+ * A sleek and dark theme for Rofi (use as Pywal template).
+ *
+ * Author: Christopher Dowell <cbdowell@gmail.com>
+ * License: MIT
+ */
+
+* {{
+    font: "M+ 1m";
+
+    background-color: rgba(0, 0, 0, 0);
+    text-color: #c8c8c8;
+
+    main-bg-color: {background};
+    light-bg-color: #141414;
+    active-bg-color: {color3};
+}}
+
+window {{
+    fullscreen: true;
+    transparency: "real";
+
+    margin: 28px 0;
+    padding: 30px;
+
+    orientation: vertical;
+    children: [mainbox];
+}}
+
+mainbox {{
+    expand: false;
+    margin: 0 70% 0 0;
+
+    background-color: @main-bg-color;
+    border: 2px solid;
+    border-color: @light-bg-color;
+}}
+
+
+/*                 __
+ * | _  _    _|_  |__) _  _
+ * || ||_)|_| |   |__)(_||
+ *     |
+ */
+
+inputbar {{
+    children: [prompt, entry];
+}}
+
+prompt {{
+    padding: 0.5em 0.625em;
+    background-color: @light-bg-color;
+}}
+
+entry {{
+    margin: 0 0.5em;
+    padding: 0.5em 0.125em;
+
+    border: 0 0 1px 0 solid;
+    border-color: @active-bg-color;
+}}
+
+
+/*  __
+ * |__) _  _   | _|_ _
+ * |  \(/__)|_||_ | _)
+ */
+
+listview {{
+    lines: 3;
+    margin: 0.5em;
+}}
+
+element {{
+    padding: 0.625em 0.75em;
+}}
+
+element normal, element alternate {{
+    border: 0 0 0 4px solid;
+    border-color: @main-bg-color;
+}}
+
+element selected {{
+    background-color: @light-bg-color;
+    border: 0 0 0 4px solid;
+    border-color: @active-bg-color;
+}}
+
+element-icon {{
+    size: 1em;
+    padding: 0 0.5em 0 0;
+}}
