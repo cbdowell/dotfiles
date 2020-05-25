@@ -1,22 +1,12 @@
-# Dotfiles
+dotfiles
+========
 
-Using [dotbot](https://github.com/anishathalye/dotbot/)
+User preference and configuration files that I use to build my working environment.
 
+This repository includes [git](http://git-scm.com/) submodules. When cloning to a new machine, the submodules need to be initialized.
 
-## Install
+    $ git submodule update --init
 
-Before installing, see [DEPENDENCIES.md](./DEPENDENCIES.md) for details about requirements.
+Every submodule can be updated to the latest available version at once:
 
-1. Clone this repo
-2. Run `./install` (can be safely executed again later).
-
-## Configuration
-
-See [dotbot](https://github.com/anishathalye/dotbot/) docs for more info
-and [install.yaml](./install.yaml) for examples.
-
-# Using Wget
-
-```
-wget http://bit.ly/2ECPXfY -O - | sh
-```
+    $ git submodule foreach git pull origin master
